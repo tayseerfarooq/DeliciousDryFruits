@@ -1,0 +1,809 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "email": "admin@deliciousdryfruits.com",
+      "password": "$2b$10$hsL9fe/TZ9JKef0D2ABGquD6.R15lKD3Bik7sWyrw4mFLmwxgZqhu",
+      "name": "Admin User",
+      "role": "admin",
+      "phone": "+919876543210",
+      "createdAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "user-001",
+      "email": "customer@example.com",
+      "password": "$2b$10$hsL9fe/TZ9JKef0D2ABGquD6.R15lKD3Bik7sWyrw4mFLmwxgZqhu",
+      "name": "Test Customer",
+      "role": "customer",
+      "phone": "+919876543999",
+      "createdAt": "2026-01-20T14:30:00.000Z"
+    },
+    {
+      "email": "test@example.com",
+      "password": "$2b$10$8ia8IJjzMga0kPm9SNO/I.cBgikWwvYkAdDm90mnbjQoNU/zmPX3e",
+      "name": "Test User",
+      "phone": "",
+      "role": "customer",
+      "id": "1769457906120-c7zr1iflo",
+      "createdAt": "2026-01-26T20:05:06.120Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-001",
+      "name": "Premium Nuts",
+      "slug": "premium-nuts",
+      "description": "Hand-picked premium quality nuts from the finest sources worldwide",
+      "image": "/images/products/mixed_nuts_1769455895711.png",
+      "displayOrder": 1,
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    },
+    {
+      "id": "cat-002",
+      "name": "Dried Fruits",
+      "slug": "dried-fruits",
+      "description": "Naturally sweet and nutritious dried fruits packed with goodness",
+      "image": "/images/products/dried_apricots_1769455940424.png",
+      "displayOrder": 2,
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    },
+    {
+      "id": "cat-003",
+      "name": "Seeds & Trail Mix",
+      "slug": "seeds-trail-mix",
+      "description": "Energy-packed seeds and trail mixes for active lifestyles",
+      "image": "/images/products/trail_mix_1769456021250.png",
+      "displayOrder": 3,
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    },
+    {
+      "id": "cat-004",
+      "name": "Gift Hampers",
+      "slug": "gift-hampers",
+      "description": "Elegant gift hampers perfect for celebrations and special occasions",
+      "image": "/images/products/gift_hamper_luxury_1769456037573.png",
+      "displayOrder": 4,
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-001",
+      "name": "Premium California Almonds",
+      "slug": "premium-california-almonds",
+      "description": "Rich in protein, fiber, and vitamin E, our California almonds are perfect for healthy snacking. These premium grade almonds are hand-selected for their superior taste and nutritional value.",
+      "shortDescription": "Premium quality California almonds, rich in nutrients",
+      "categoryId": "cat-001",
+      "images": [
+        "/images/products/premium_almonds_1769455825239.png"
+      ],
+      "variants": [
+        {
+          "id": "var-001-1",
+          "weight": "250g",
+          "price": 299,
+          "stock": 50,
+          "sku": "ALM-250"
+        },
+        {
+          "id": "var-001-2",
+          "weight": "500g",
+          "price": 549,
+          "stock": 40,
+          "sku": "ALM-500"
+        },
+        {
+          "id": "var-001-3",
+          "weight": "1kg",
+          "price": 999,
+          "stock": 30,
+          "sku": "ALM-1000"
+        }
+      ],
+      "featured": true,
+      "nutritionalInfo": {
+        "calories": "576 kcal per 100g",
+        "protein": "21g",
+        "carbs": "22g",
+        "fat": "49g",
+        "fiber": "12g"
+      },
+      "benefits": [
+        "Rich in vitamin E and antioxidants",
+        "Supports heart health",
+        "Helps maintain healthy cholesterol",
+        "Great source of plant-based protein"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-002",
+      "name": "Jumbo Cashew Nuts",
+      "slug": "jumbo-cashew-nuts",
+      "description": "Creamy and buttery jumbo cashews sourced from premium plantations. Perfect for snacking, cooking, or as part of your daily nutrition routine.",
+      "shortDescription": "Jumbo size premium cashews, buttery and delicious",
+      "categoryId": "cat-001",
+      "images": [
+        "/images/products/cashew_nuts_1769455840957.png"
+      ],
+      "variants": [
+        {
+          "id": "var-002-1",
+          "weight": "250g",
+          "price": 349,
+          "stock": 45,
+          "sku": "CASH-250"
+        },
+        {
+          "id": "var-002-2",
+          "weight": "500g",
+          "price": 649,
+          "stock": 35,
+          "sku": "CASH-500"
+        },
+        {
+          "id": "var-002-3",
+          "weight": "1kg",
+          "price": 1199,
+          "stock": 25,
+          "sku": "CASH-1000"
+        }
+      ],
+      "featured": true,
+      "nutritionalInfo": {
+        "calories": "553 kcal per 100g",
+        "protein": "18g",
+        "carbs": "30g",
+        "fat": "44g",
+        "fiber": "3g"
+      },
+      "benefits": [
+        "Rich in healthy fats and minerals",
+        "Supports bone health with magnesium",
+        "Boosts energy levels",
+        "Promotes healthy skin"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-003",
+      "name": "Roasted Pistachios",
+      "slug": "roasted-pistachios",
+      "description": "Lightly roasted premium pistachios with a delightful crunch. These green gems are packed with nutrients and make for an irresistible healthy snack.",
+      "shortDescription": "Roasted pistachios, crunchy and nutritious",
+      "categoryId": "cat-001",
+      "images": [
+        "/images/products/pistachios_premium_1769455857333.png"
+      ],
+      "variants": [
+        {
+          "id": "var-003-1",
+          "weight": "250g",
+          "price": 399,
+          "stock": 40,
+          "sku": "PIST-250"
+        },
+        {
+          "id": "var-003-2",
+          "weight": "500g",
+          "price": 749,
+          "stock": 30,
+          "sku": "PIST-500"
+        },
+        {
+          "id": "var-003-3",
+          "weight": "1kg",
+          "price": 1399,
+          "stock": 20,
+          "sku": "PIST-1000"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "562 kcal per 100g",
+        "protein": "20g",
+        "carbs": "28g",
+        "fat": "45g",
+        "fiber": "10g"
+      },
+      "benefits": [
+        "High in antioxidants",
+        "Supports eye health",
+        "Aids in weight management",
+        "Promotes gut health"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-004",
+      "name": "Premium Walnut Halves",
+      "slug": "premium-walnut-halves",
+      "description": "Fresh walnut halves known for their omega-3 content. Perfect for baking, cooking, or enjoying as a brain-boosting snack.",
+      "shortDescription": "Fresh walnut halves, rich in omega-3",
+      "categoryId": "cat-001",
+      "images": [
+        "/images/products/walnuts_halves_1769455880523.png"
+      ],
+      "variants": [
+        {
+          "id": "var-004-1",
+          "weight": "250g",
+          "price": 329,
+          "stock": 35,
+          "sku": "WAL-250"
+        },
+        {
+          "id": "var-004-2",
+          "weight": "500g",
+          "price": 599,
+          "stock": 28,
+          "sku": "WAL-500"
+        },
+        {
+          "id": "var-004-3",
+          "weight": "1kg",
+          "price": 1099,
+          "stock": 20,
+          "sku": "WAL-1000"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "654 kcal per 100g",
+        "protein": "15g",
+        "carbs": "14g",
+        "fat": "65g",
+        "fiber": "7g"
+      },
+      "benefits": [
+        "Excellent source of omega-3 fatty acids",
+        "Supports brain health",
+        "Anti-inflammatory properties",
+        "Promotes heart health"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-005",
+      "name": "Deluxe Mixed Nuts",
+      "slug": "deluxe-mixed-nuts",
+      "description": "A premium blend of almonds, cashews, pistachios, and walnuts. Perfect combination for parties, daily snacking, or gifting.",
+      "shortDescription": "Premium mixed nuts blend for all occasions",
+      "categoryId": "cat-001",
+      "images": [
+        "/images/products/mixed_nuts_1769455895711.png"
+      ],
+      "variants": [
+        {
+          "id": "var-005-1",
+          "weight": "250g",
+          "price": 349,
+          "stock": 50,
+          "sku": "MIX-250"
+        },
+        {
+          "id": "var-005-2",
+          "weight": "500g",
+          "price": 649,
+          "stock": 40,
+          "sku": "MIX-500"
+        },
+        {
+          "id": "var-005-3",
+          "weight": "1kg",
+          "price": 1199,
+          "stock": 30,
+          "sku": "MIX-1000"
+        }
+      ],
+      "featured": true,
+      "nutritionalInfo": {
+        "calories": "590 kcal per 100g",
+        "protein": "19g",
+        "carbs": "24g",
+        "fat": "50g",
+        "fiber": "9g"
+      },
+      "benefits": [
+        "Variety of nutrients in one pack",
+        "Great for heart health",
+        "Balanced energy source",
+        "Rich in antioxidants"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-006",
+      "name": "Premium Medjool Dates",
+      "slug": "premium-medjool-dates",
+      "description": "Soft, sweet, and naturally delicious Medjool dates. A perfect natural sweetener and energy booster packed with essential nutrients.",
+      "shortDescription": "Premium Medjool dates, naturally sweet",
+      "categoryId": "cat-002",
+      "images": [
+        "/images/products/medjool_dates_1769455911570.png"
+      ],
+      "variants": [
+        {
+          "id": "var-006-1",
+          "weight": "250g",
+          "price": 199,
+          "stock": 60,
+          "sku": "DATE-250"
+        },
+        {
+          "id": "var-006-2",
+          "weight": "500g",
+          "price": 369,
+          "stock": 50,
+          "sku": "DATE-500"
+        },
+        {
+          "id": "var-006-3",
+          "weight": "1kg",
+          "price": 699,
+          "stock": 35,
+          "sku": "DATE-1000"
+        }
+      ],
+      "featured": true,
+      "nutritionalInfo": {
+        "calories": "277 kcal per 100g",
+        "protein": "2g",
+        "carbs": "75g",
+        "fat": "0.2g",
+        "fiber": "7g"
+      },
+      "benefits": [
+        "Natural energy booster",
+        "Rich in dietary fiber",
+        "Supports digestive health",
+        "Natural sweetener alternative"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-007",
+      "name": "Turkish Dried Figs",
+      "slug": "turkish-dried-figs",
+      "description": "Premium quality dried figs from Turkey. Sweet, chewy, and packed with fiber and minerals. Perfect for snacking or adding to your favorite recipes.",
+      "shortDescription": "Turkish dried figs, sweet and nutritious",
+      "categoryId": "cat-002",
+      "images": [
+        "/images/products/dried_figs_1769455926212.png"
+      ],
+      "variants": [
+        {
+          "id": "var-007-1",
+          "weight": "250g",
+          "price": 249,
+          "stock": 45,
+          "sku": "FIG-250"
+        },
+        {
+          "id": "var-007-2",
+          "weight": "500g",
+          "price": 459,
+          "stock": 35,
+          "sku": "FIG-500"
+        },
+        {
+          "id": "var-007-3",
+          "weight": "1kg",
+          "price": 849,
+          "stock": 25,
+          "sku": "FIG-1000"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "249 kcal per 100g",
+        "protein": "3g",
+        "carbs": "64g",
+        "fat": "1g",
+        "fiber": "10g"
+      },
+      "benefits": [
+        "High in dietary fiber",
+        "Rich in minerals like calcium and potassium",
+        "Supports bone health",
+        "Natural prebiotic properties"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-008",
+      "name": "Dried Apricots",
+      "slug": "dried-apricots",
+      "description": "Sun-dried apricots bursting with natural sweetness and vitamins. These golden gems are perfect for a healthy snack or adding to cereals and desserts.",
+      "shortDescription": "Sun-dried apricots, naturally sweet",
+      "categoryId": "cat-002",
+      "images": [
+        "/images/products/dried_apricots_1769455940424.png"
+      ],
+      "variants": [
+        {
+          "id": "var-008-1",
+          "weight": "250g",
+          "price": 219,
+          "stock": 55,
+          "sku": "APR-250"
+        },
+        {
+          "id": "var-008-2",
+          "weight": "500g",
+          "price": 399,
+          "stock": 45,
+          "sku": "APR-500"
+        },
+        {
+          "id": "var-008-3",
+          "weight": "1kg",
+          "price": 749,
+          "stock": 30,
+          "sku": "APR-1000"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "241 kcal per 100g",
+        "protein": "3g",
+        "carbs": "63g",
+        "fat": "0.5g",
+        "fiber": "7g"
+      },
+      "benefits": [
+        "Rich in vitamin A",
+        "Supports eye health",
+        "Natural source of iron",
+        "Promotes healthy skin"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-009",
+      "name": "Golden Raisins",
+      "slug": "golden-raisins",
+      "description": "Plump and sweet golden raisins made from premium grapes. Perfect for baking, cooking, or enjoying as a quick energy boost.",
+      "shortDescription": "Golden raisins, sweet and energy-packed",
+      "categoryId": "cat-002",
+      "images": [
+        "/images/products/golden_raisins_1769455956073.png"
+      ],
+      "variants": [
+        {
+          "id": "var-009-1",
+          "weight": "250g",
+          "price": 159,
+          "stock": 70,
+          "sku": "RAIS-250"
+        },
+        {
+          "id": "var-009-2",
+          "weight": "500g",
+          "price": 289,
+          "stock": 60,
+          "sku": "RAIS-500"
+        },
+        {
+          "id": "var-009-3",
+          "weight": "1kg",
+          "price": 529,
+          "stock": 45,
+          "sku": "RAIS-1000"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "299 kcal per 100g",
+        "protein": "3g",
+        "carbs": "79g",
+        "fat": "0.5g",
+        "fiber": "4g"
+      },
+      "benefits": [
+        "Quick energy source",
+        "Rich in iron and potassium",
+        "Aids digestion",
+        "Supports bone density"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-010",
+      "name": "Dried Cranberries",
+      "slug": "dried-cranberries",
+      "description": "Tart and sweet dried cranberries rich in antioxidants. Great for salads, trail mixes, or healthysnacking throughout the day.",
+      "shortDescription": "Dried cranberries, tart and antioxidant-rich",
+      "categoryId": "cat-002",
+      "images": [
+        "/images/products/dried_cranberries_1769455972260.png"
+      ],
+      "variants": [
+        {
+          "id": "var-010-1",
+          "weight": "200g",
+          "price": 189,
+          "stock": 50,
+          "sku": "CRAN-200"
+        },
+        {
+          "id": "var-010-2",
+          "weight": "400g",
+          "price": 349,
+          "stock": 40,
+          "sku": "CRAN-400"
+        },
+        {
+          "id": "var-010-3",
+          "weight": "800g",
+          "price": 649,
+          "stock": 30,
+          "sku": "CRAN-800"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "308 kcal per 100g",
+        "protein": "0.1g",
+        "carbs": "82g",
+        "fat": "1g",
+        "fiber": "5g"
+      },
+      "benefits": [
+        "High in antioxidants",
+        "Supports urinary tract health",
+        "Rich in vitamin C",
+        "Anti-inflammatory properties"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-011",
+      "name": "Roasted Pumpkin Seeds",
+      "slug": "roasted-pumpkin-seeds",
+      "description": "Lightly roasted pumpkin seeds (pepitas) packed with minerals and protein. Crunchy and nutritious superfood for daily snacking.",
+      "shortDescription": "Roasted pumpkin seeds, nutrient-dense superfood",
+      "categoryId": "cat-003",
+      "images": [
+        "/images/products/pumpkin_seeds_1769455989573.png"
+      ],
+      "variants": [
+        {
+          "id": "var-011-1",
+          "weight": "200g",
+          "price": 169,
+          "stock": 45,
+          "sku": "PUMP-200"
+        },
+        {
+          "id": "var-011-2",
+          "weight": "400g",
+          "price": 309,
+          "stock": 35,
+          "sku": "PUMP-400"
+        },
+        {
+          "id": "var-011-3",
+          "weight": "800g",
+          "price": 579,
+          "stock": 25,
+          "sku": "PUMP-800"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "559 kcal per 100g",
+        "protein": "30g",
+        "carbs": "14g",
+        "fat": "49g",
+        "fiber": "6g"
+      },
+      "benefits": [
+        "High in protein and fiber",
+        "Rich in magnesium and zinc",
+        "Supports prostate health",
+        "Promotes better sleep"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-012",
+      "name": "Sunflower Seeds",
+      "slug": "sunflower-seeds",
+      "description": "Raw sunflower seed kernels rich in vitamin E and minerals. Perfect for sprinkling on salads, smoothies, or enjoying as a healthy snack.",
+      "shortDescription": "Sunflower seeds, vitamin E powerhouse",
+      "categoryId": "cat-003",
+      "images": [
+        "/images/products/sunflower_seeds_1769456004427.png"
+      ],
+      "variants": [
+        {
+          "id": "var-012-1",
+          "weight": "200g",
+          "price": 139,
+          "stock": 55,
+          "sku": "SUN-200"
+        },
+        {
+          "id": "var-012-2",
+          "weight": "400g",
+          "price": 259,
+          "stock": 45,
+          "sku": "SUN-400"
+        },
+        {
+          "id": "var-012-3",
+          "weight": "800g",
+          "price": 489,
+          "stock": 35,
+          "sku": "SUN-800"
+        }
+      ],
+      "featured": false,
+      "nutritionalInfo": {
+        "calories": "584 kcal per 100g",
+        "protein": "21g",
+        "carbs": "20g",
+        "fat": "51g",
+        "fiber": "9g"
+      },
+      "benefits": [
+        "Excellent source of vitamin E",
+        "Anti-inflammatory properties",
+        "Supports immune system",
+        "Promotes healthy skin"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-013",
+      "name": "Premium Trail Mix",
+      "slug": "premium-trail-mix",
+      "description": "Our signature trail mix featuring almonds, cashews, walnuts, cranberries, raisins, and pumpkin seeds. The perfect on-the-go energy booster for active lifestyles.",
+      "shortDescription": "Premium trail mix, perfect energy blend",
+      "categoryId": "cat-003",
+      "images": [
+        "/images/products/trail_mix_1769456021250.png"
+      ],
+      "variants": [
+        {
+          "id": "var-013-1",
+          "weight": "250g",
+          "price": 279,
+          "stock": 50,
+          "sku": "TRAIL-250"
+        },
+        {
+          "id": "var-013-2",
+          "weight": "500g",
+          "price": 519,
+          "stock": 40,
+          "sku": "TRAIL-500"
+        },
+        {
+          "id": "var-013-3",
+          "weight": "1kg",
+          "price": 959,
+          "stock": 30,
+          "sku": "TRAIL-1000"
+        }
+      ],
+      "featured": true,
+      "nutritionalInfo": {
+        "calories": "480 kcal per 100g",
+        "protein": "15g",
+        "carbs": "45g",
+        "fat": "28g",
+        "fiber": "8g"
+      },
+      "benefits": [
+        "Balanced blend of protein and carbs",
+        "Sustained energy release",
+        "Rich in antioxidants",
+        "Perfect for outdoor activities"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-014",
+      "name": "Luxury Gift Hamper",
+      "slug": "luxury-gift-hamper",
+      "description": "An exquisite collection of premium nuts and dried fruits beautifully presented in an elegant wicker basket. Perfect for corporate gifting, weddings, or festive celebrations.",
+      "shortDescription": "Luxury dry fruits hamper, elegant presentation",
+      "categoryId": "cat-004",
+      "images": [
+        "/images/products/gift_hamper_luxury_1769456037573.png"
+      ],
+      "variants": [
+        {
+          "id": "var-014-1",
+          "weight": "1kg",
+          "price": 1499,
+          "stock": 20,
+          "sku": "GIFT-LUX-1"
+        },
+        {
+          "id": "var-014-2",
+          "weight": "1.5kg",
+          "price": 2199,
+          "stock": 15,
+          "sku": "GIFT-LUX-15"
+        },
+        {
+          "id": "var-014-3",
+          "weight": "2kg",
+          "price": 2899,
+          "stock": 10,
+          "sku": "GIFT-LUX-2"
+        }
+      ],
+      "featured": true,
+      "benefits": [
+        "Premium packaging with ribbon",
+        "Assorted premium nuts and fruits",
+        "Perfect for special occasions",
+        "Elegant presentation"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "prod-015",
+      "name": "Festive Gift Box",
+      "slug": "festive-gift-box",
+      "description": "A festive collection of premium dry fruits in an ornate golden gift box. Includes almonds, cashews, dates, figs, and cranberries elegantly arranged in compartments.",
+      "shortDescription": "Festive gift box, premium assortment",
+      "categoryId": "cat-004",
+      "images": [
+        "/images/products/festive_gift_box_1769456055342.png"
+      ],
+      "variants": [
+        {
+          "id": "var-015-1",
+          "weight": "800g",
+          "price": 1199,
+          "stock": 25,
+          "sku": "GIFT-FEST-08"
+        },
+        {
+          "id": "var-015-2",
+          "weight": "1.2kg",
+          "price": 1699,
+          "stock": 20,
+          "sku": "GIFT-FEST-12"
+        },
+        {
+          "id": "var-015-3",
+          "weight": "1.6kg",
+          "price": 2199,
+          "stock": 15,
+          "sku": "GIFT-FEST-16"
+        }
+      ],
+      "featured": true,
+      "benefits": [
+        "Golden ornate packaging",
+        "Compartmentalized arrangement",
+        "Perfect for festivals",
+        "Premium quality selection"
+      ],
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    }
+  ],
+  "carts": [],
+  "orders": []
+}
