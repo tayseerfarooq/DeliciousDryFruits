@@ -65,7 +65,7 @@ export default function Header() {
                             fontWeight: '800',
                             background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)',
                             WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
+                            WebkitTextFillColor: '#2563eb',
                             backgroundClip: 'text'
                         }}>
                             Delicious Dry Fruits
