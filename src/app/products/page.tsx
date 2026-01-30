@@ -17,6 +17,14 @@ export default function ProductsPage() {
         fetchCategories();
     }, []);
 
+    // Sync state with URL params
+    useEffect(() => {
+        const category = searchParams.get('category');
+        if (category !== selectedCategory) {
+            setSelectedCategory(category || '');
+        }
+    }, [searchParams]);
+
     useEffect(() => {
         fetchProducts();
     }, [selectedCategory, searchQuery]);
