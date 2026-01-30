@@ -26,6 +26,15 @@
       "role": "customer",
       "id": "1769457906120-c7zr1iflo",
       "createdAt": "2026-01-26T20:05:06.120Z"
+    },
+    {
+      "email": "ahmedabuzar7911@gmail.com",
+      "password": "$2b$10$qpJhyMPH1VUUV758R83SPO9T3SkhqWFo9PGYgRa/wUmaA3c3k0O1a",
+      "name": "ahmed",
+      "phone": "",
+      "role": "customer",
+      "id": "1769769404013-8r5uvhqiy",
+      "createdAt": "2026-01-30T10:36:44.013Z"
     }
   ],
   "categories": [
