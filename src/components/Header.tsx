@@ -2,18 +2,19 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
     const [user, setUser] = useState<any>(null);
     const [cartCount, setCartCount] = useState(0);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
         fetchUser();
         fetchCartCount();
-    }, []);
+    }, [pathname]);
 
     const fetchUser = async () => {
         try {

@@ -35,6 +35,15 @@
       "role": "customer",
       "id": "1769769404013-8r5uvhqiy",
       "createdAt": "2026-01-30T10:36:44.013Z"
+    },
+    {
+      "email": "ahmedabuzar711@gmail.com",
+      "password": "$2b$10$sOJrxLW4WmV7wbV2uXP.6.6cImizj1X/rcMLMNRCJNtSy5yrH4T5K",
+      "name": "ahmed",
+      "phone": "",
+      "role": "customer",
+      "id": "1769770979679-axaen1jld",
+      "createdAt": "2026-01-30T11:02:59.679Z"
     }
   ],
   "categories": [
@@ -813,6 +822,19 @@
       "updatedAt": "2026-01-15T10:00:00.000Z"
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "id": "1769770804808-b0a3ikjwc",
+      "userId": "1769769404013-8r5uvhqiy",
+      "items": [
+        {
+          "productId": "prod-001",
+          "variantId": "var-001-1",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-01-30T11:00:04.808Z"
+    }
+  ],
   "orders": []
 }
