@@ -834,6 +834,18 @@
         }
       ],
       "updatedAt": "2026-01-30T11:00:04.808Z"
+    },
+    {
+      "id": "1769771666872-ieufs5jd2",
+      "userId": "1769770979679-axaen1jld",
+      "items": [
+        {
+          "productId": "prod-001",
+          "variantId": "var-001-1",
+          "quantity": 2
+        }
+      ],
+      "updatedAt": "2026-01-30T11:14:26.872Z"
     }
   ],
   "orders": []

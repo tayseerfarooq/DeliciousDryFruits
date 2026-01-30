@@ -16,6 +16,12 @@ export default function Header() {
         fetchCartCount();
     }, [pathname]);
 
+    useEffect(() => {
+        const handleCartUpdate = () => fetchCartCount();
+        window.addEventListener('cart-updated', handleCartUpdate);
+        return () => window.removeEventListener('cart-updated', handleCartUpdate);
+    }, []);
+
     const fetchUser = async () => {
         try {
             const res = await fetch('/api/auth/me');
