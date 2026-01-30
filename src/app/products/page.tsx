@@ -1,50 +1,72 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { Product, Category } from '@/lib/models';
 
-export default function ProductsPage() {
+function ProductsContent() {
     const searchParams = useSearchParams();
+    const router = useRouter();
+    const categoryId = searchParams.get('category') || '';
+
+    // Local state for data only
     const [products, setProducts] = useState<Product[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState(true);
-    const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
+    // Search query remains local state to allow typing without URL updates until submission (if implemented) or simple filtering
+    // In this implementation it filters the fetch but doesn't sync to URL to match previous behavior
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         fetchCategories();
     }, []);
 
-    // Sync state with URL params
+    // Fetch products whenever categoryId (from URL) or searchQuery (local) changes
     useEffect(() => {
-        const category = searchParams.get('category');
-        if (category !== selectedCategory) {
-            setSelectedCategory(category || '');
-        }
-    }, [searchParams]);
+        const fetchProducts = async () => {
+            setLoading(true);
+            try {
+                const params = new URLSearchParams();
+                if (categoryId) params.append('category', categoryId);
+                if (searchQuery) params.append('search', searchQuery);
 
-    useEffect(() => {
+                const res = await fetch(`/api/products?${params}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    setProducts(data.products || []);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchProducts();
-    }, [selectedCategory, searchQuery]);
+    }, [categoryId, searchQuery]);
 
     const fetchCategories = async () => {
-        const res = await fetch('/api/categories');
-        const data = await res.json();
-        setCategories(data.categories);
+        try {
+            const res = await fetch('/api/categories');
+            if (res.ok) {
+                const data = await res.json();
+                setCategories(data.categories || []);
+            }
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
     };
 
-    const fetchProducts = async () => {
-        setLoading(true);
-        const params = new URLSearchParams();
-        if (selectedCategory) params.append('category', selectedCategory);
-        if (searchQuery) params.append('search', searchQuery);
-
-        const res = await fetch(`/api/products?${params}`);
-        const data = await res.json();
-        setProducts(data.products);
-        setLoading(false);
+    const handleCategoryChange = (id: string) => {
+        const params = new URLSearchParams(searchParams.toString());
+        if (id) {
+            params.set('category', id);
+        } else {
+            params.delete('category');
+        }
+        // Use router.push to navigate, which updates the URL and triggers the useEffect via searchParams
+        router.push(`/products?${params.toString()}`);
     };
 
     return (
@@ -77,8 +99,8 @@ export default function ProductsPage() {
                                     <input
                                         type="radio"
                                         name="category"
-                                        checked={selectedCategory === ''}
-                                        onChange={() => setSelectedCategory('')}
+                                        checked={categoryId === ''}
+                                        onChange={() => handleCategoryChange('')}
                                     />
                                     <span>All Products</span>
                                 </label>
@@ -87,8 +109,8 @@ export default function ProductsPage() {
                                         <input
                                             type="radio"
                                             name="category"
-                                            checked={selectedCategory === cat.id}
-                                            onChange={() => setSelectedCategory(cat.id)}
+                                            checked={categoryId === cat.id}
+                                            onChange={() => handleCategoryChange(cat.id)}
                                         />
                                         <span>{cat.name}</span>
                                     </label>
@@ -135,5 +157,18 @@ export default function ProductsPage() {
         }
       `}</style>
         </div>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={
+            <div className="container py-3xl text-center">
+                <div className="spinner spinner-primary" style={{ width: '48px', height: '48px', margin: '0 auto' }} />
+                <p>Loading...</p>
+            </div>
+        }>
+            <ProductsContent />
+        </Suspense>
     );
 }
