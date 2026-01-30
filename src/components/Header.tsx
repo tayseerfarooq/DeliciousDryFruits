@@ -55,7 +55,7 @@ export default function Header() {
             zIndex: 'var(--z-sticky)',
             boxShadow: 'var(--shadow-sm)'
         }}>
-            <div className="container" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
+            <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     {/* Logo */}
                     <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-sm)', textDecoration: 'none' }}>
