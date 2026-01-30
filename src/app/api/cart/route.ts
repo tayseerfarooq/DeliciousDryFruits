@@ -172,6 +172,9 @@ export async function PUT(request: NextRequest) {
 
             if (itemIndex >= 0) {
                 items[itemIndex].quantity = quantity;
+            } else {
+                // Upsert: Add new item if not found
+                items.push({ productId, variantId, quantity });
             }
         }
 

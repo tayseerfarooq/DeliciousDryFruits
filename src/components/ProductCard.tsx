@@ -2,15 +2,23 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Product } from '@/lib/models';
 
 interface ProductCardProps {
     product: Product;
+    initialQuantity?: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-    const [adding, setAdding] = useState(false);
+export default function ProductCard({ product, initialQuantity = 0 }: ProductCardProps) {
+    const [loading, setLoading] = useState(false);
+    // Local quantity state for optimistic UI. 
+    const [quantity, setQuantity] = useState(initialQuantity);
+
+    // Sync state if prop changes (e.g. on re-fetch from parent)
+    useEffect(() => {
+        setQuantity(initialQuantity);
+    }, [initialQuantity]);
 
     const minPrice = Math.min(...product.variants.map(v => v.price));
     const maxPrice = Math.max(...product.variants.map(v => v.price));
@@ -18,39 +26,69 @@ export default function ProductCard({ product }: ProductCardProps) {
         ? `₹${minPrice}`
         : `₹${minPrice} - ₹${maxPrice}`;
 
-    const handleAddToCart = async (e: React.MouseEvent) => {
-        // e.preventDefault() is implicitly handled if not in a link, but good practice
-        e.preventDefault();
-        e.stopPropagation();
+    const updateCart = async (newQty: number) => {
+        if (loading) return;
+        setLoading(true);
 
-        if (adding) return;
-        setAdding(true);
+        // Optimistic update
+        setQuantity(newQty);
 
         try {
             const defaultVariant = product.variants[0];
-            const res = await fetch('/api/cart', {
-                method: 'POST',
+            const endpoint = '/api/cart';
+            let method = 'POST';
+            let body = {};
+
+            // Determine API action based on diff? 
+            // The existing API has POST (add) and PUT (update/set).
+            // PUT /api/cart expects { productId, variantId, quantity }.
+            // This sets absolute quantity. Perfect for our counter.
+
+            method = 'PUT';
+            body = {
+                productId: product.id,
+                variantId: defaultVariant.id,
+                quantity: newQty
+            };
+
+            const res = await fetch(endpoint, {
+                method,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    productId: product.id,
-                    variantId: defaultVariant.id,
-                    quantity: 1
-                })
+                body: JSON.stringify(body)
             });
 
             if (res.ok) {
                 window.dispatchEvent(new Event('cart-updated'));
             } else {
-                if (res.status === 401) window.location.href = '/login';
+                if (res.status === 401) {
+                    window.location.href = '/login';
+                } else {
+                    // Revert on error
+                    console.error('Update failed');
+                    // We might want to fetch actual cart state here to sync
+                }
             }
         } catch (error) {
-            console.error('Error adding to cart:', error);
+            console.error('Error updating cart:', error);
         } finally {
-            setAdding(false);
+            setLoading(false);
         }
     };
 
-    // Refactored structure: Button is OUTSIDE the Link
+    const handleIncrement = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        updateCart(quantity + 1);
+    };
+
+    const handleDecrement = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (quantity > 0) {
+            updateCart(quantity - 1);
+        }
+    };
+
     return (
         <div className="card card-product" style={{ position: 'relative' }}>
             <div className="card-product-image" style={{ position: 'relative' }}>
@@ -80,25 +118,31 @@ export default function ProductCard({ product }: ProductCardProps) {
                         backgroundColor: 'var(--color-accent)', color: 'var(--color-brown-100)',
                         padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-full)',
                         fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px',
-                        pointerEvents: 'none'
+                        pointerEvents: 'none', zIndex: 1
                     }}>
                         Featured
                     </span>
                 )}
 
-                {/* Button is sibling to Link, positioned absolutely on top */}
-                <button
-                    onClick={handleAddToCart}
-                    className="btn-quick-add"
-                    title="Quick Add to Cart"
-                    type="button"
-                >
-                    {adding ? (
-                        <span className="spinner" style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white' }} />
+                {/* Quick Add Controls - Sibling to Link */}
+                <div className="quick-add-container">
+                    {quantity === 0 ? (
+                        <button
+                            onClick={handleIncrement}
+                            className="btn-quick-add"
+                            title="Add to Cart"
+                            type="button"
+                        >
+                            <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>+</span>
+                        </button>
                     ) : (
-                        <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>+</span>
+                        <div className="qty-control">
+                            <button onClick={handleDecrement} className="qty-btn minus">-</button>
+                            <span className="qty-text">{quantity}</span>
+                            <button onClick={handleIncrement} className="qty-btn plus">+</button>
+                        </div>
                     )}
-                </button>
+                </div>
             </div>
 
             <Link href={`/products/${product.id}`} style={{ textDecoration: 'none', display: 'block', flex: 1 }}>
@@ -125,12 +169,31 @@ export default function ProductCard({ product }: ProductCardProps) {
                 .card-product-image {
                     position: relative;
                 }
-                .btn-quick-add {
+                
+                .quick-add-container {
                     position: absolute;
                     bottom: var(--spacing-sm);
                     right: var(--spacing-sm);
-                    z-index: 20; /* Higher than before */
-                    padding: 0.5rem;
+                    z-index: 20;
+                    opacity: 0;
+                    transform: translateY(10px);
+                    transition: all 0.2s ease-in-out;
+                }
+
+                .card-product-image:hover .quick-add-container,
+                .quick-add-container:hover,
+                .quick-add-container:focus-within {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                /* If quantity > 0, make it visible always? 
+                   User requirement: "button must not always be visibe it must be visible only when the cursor is on it"
+                   So we keep opacity: 0 logic even if qty > 0.
+                */
+                
+                .btn-quick-add {
+                    padding: 0;
                     border-radius: 50%;
                     width: 40px;
                     height: 40px;
@@ -142,22 +205,43 @@ export default function ProductCard({ product }: ProductCardProps) {
                     color: white;
                     border: none;
                     cursor: pointer;
-                    opacity: 0;
-                    transform: translateY(10px);
-                    transition: all 0.2s ease-in-out;
+                    transition: transform 0.2s;
                 }
-                
-                /* Show on hover of the card image container */
-                .card-product-image:hover .btn-quick-add,
-                .btn-quick-add:focus-visible,
-                .btn-quick-add:hover {
-                    opacity: 1;
-                    transform: translateY(0) !important;
-                }
-
                 .btn-quick-add:hover {
                     background-color: var(--color-primary-dark);
-                    transform: scale(1.1) translateY(0) !important;
+                    transform: scale(1.1);
+                }
+
+                .qty-control {
+                    display: flex;
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 20px; /* Pill shape */
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    overflow: hidden;
+                    height: 40px;
+                }
+                .qty-btn {
+                    width: 32px;
+                    height: 100%;
+                    border: none;
+                    background-color: var(--color-primary);
+                    color: white;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .qty-btn:hover {
+                    background-color: var(--color-primary-dark);
+                }
+                .qty-text {
+                    padding: 0 12px;
+                    font-weight: 600;
+                    color: var(--color-text);
+                    min-width: 20px;
+                    text-align: center;
                 }
             `}</style>
         </div>

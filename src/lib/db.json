@@ -840,32 +840,17 @@
       "userId": "1769770979679-axaen1jld",
       "items": [
         {
+          "productId": "prod-005",
+          "variantId": "var-005-1",
+          "quantity": 2
+        },
+        {
           "productId": "prod-001",
           "variantId": "var-001-1",
           "quantity": 2
-        },
-        {
-          "productId": "prod-006",
-          "variantId": "var-006-1",
-          "quantity": 8
-        },
-        {
-          "productId": "prod-010",
-          "variantId": "var-010-1",
-          "quantity": 2
-        },
-        {
-          "productId": "prod-012",
-          "variantId": "var-012-1",
-          "quantity": 1
-        },
-        {
-          "productId": "prod-011",
-          "variantId": "var-011-1",
-          "quantity": 11
         }
       ],
-      "updatedAt": "2026-01-30T11:24:19.146Z"
+      "updatedAt": "2026-01-30T11:31:06.666Z"
     }
   ],
   "orders": []
