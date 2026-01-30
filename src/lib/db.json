@@ -843,9 +843,24 @@
           "productId": "prod-001",
           "variantId": "var-001-1",
           "quantity": 2
+        },
+        {
+          "productId": "prod-006",
+          "variantId": "var-006-1",
+          "quantity": 8
+        },
+        {
+          "productId": "prod-010",
+          "variantId": "var-010-1",
+          "quantity": 2
+        },
+        {
+          "productId": "prod-012",
+          "variantId": "var-012-1",
+          "quantity": 1
         }
       ],
-      "updatedAt": "2026-01-30T11:14:26.872Z"
+      "updatedAt": "2026-01-30T11:16:13.243Z"
     }
   ],
   "orders": []
