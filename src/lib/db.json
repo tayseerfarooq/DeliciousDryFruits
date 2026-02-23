@@ -26,6 +26,15 @@
       "role": "customer",
       "id": "1769457906120-c7zr1iflo",
       "createdAt": "2026-01-26T20:05:06.120Z"
+    },
+    {
+      "email": "tayseer@gmail.com",
+      "password": "$2b$10$LECgauat/3tPTNCnWPXV6.5OevKzp.lpM9tosMbjU9I4eIuq83l86",
+      "name": "tayseer",
+      "phone": "+918861279090",
+      "role": "customer",
+      "id": "1771880109007-l5iy4p87a",
+      "createdAt": "2026-02-23T20:55:09.007Z"
     }
   ],
   "categories": [

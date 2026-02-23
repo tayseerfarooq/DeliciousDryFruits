@@ -75,9 +75,8 @@ export default function Header() {
                     {/* Desktop Navigation */}
                     <nav style={{ display: 'flex', gap: 'var(--spacing-xl)', alignItems: 'center' }} className="desktop-nav">
                         <Link href="/products" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Products</Link>
-                        <Link href="/products?category=cat-001" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Nuts</Link>
-                        <Link href="/products?category=cat-002" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Dried Fruits</Link>
-                        <Link href="/products?category=cat-004" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Gifts</Link>
+                        <Link href="/about" style={{ fontWeight: '600', color: 'var(--color-text)' }}>About Us</Link>
+                        <Link href="/bulk-orders" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Bulk Orders</Link>
 
                         {user ? (
                             <>
@@ -145,22 +144,21 @@ export default function Header() {
                         paddingTop: 'var(--spacing-lg)',
                         borderTop: '1px solid var(--color-border)'
                     }}>
-                        <Link href="/products" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Products</Link>
-                        <Link href="/products?category=cat-001" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Nuts</Link>
-                        <Link href="/products?category=cat-002" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Dried Fruits</Link>
-                        <Link href="/products?category=cat-004" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Gifts</Link>
+                        <Link href="/products" style={{ fontWeight: '600', color: 'var(--color-text)' }} onClick={() => setMobileMenuOpen(false)}>Products</Link>
+                        <Link href="/about" style={{ fontWeight: '600', color: 'var(--color-text)' }} onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+                        <Link href="/bulk-orders" style={{ fontWeight: '600', color: 'var(--color-text)' }} onClick={() => setMobileMenuOpen(false)}>Bulk Orders</Link>
                         {user && (
                             <>
-                                <Link href="/cart" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Cart ({cartCount})</Link>
-                                <Link href="/orders" style={{ fontWeight: '600', color: 'var(--color-text)' }}>Orders</Link>
-                                {user.role === 'admin' && <Link href="/admin" style={{ fontWeight: '600', color: 'var(--color-primary)' }}>Admin</Link>}
+                                <Link href="/cart" style={{ fontWeight: '600', color: 'var(--color-text)' }} onClick={() => setMobileMenuOpen(false)}>Cart ({cartCount})</Link>
+                                <Link href="/orders" style={{ fontWeight: '600', color: 'var(--color-text)' }} onClick={() => setMobileMenuOpen(false)}>Orders</Link>
+                                {user.role === 'admin' && <Link href="/admin" style={{ fontWeight: '600', color: 'var(--color-primary)' }} onClick={() => setMobileMenuOpen(false)}>Admin</Link>}
                                 <button onClick={handleLogout} className="btn btn-outline btn-sm">Logout</button>
                             </>
                         )}
                         {!user && (
                             <>
-                                <Link href="/login" className="btn btn-outline btn-sm">Login</Link>
-                                <Link href="/register" className="btn btn-primary btn-sm">Sign Up</Link>
+                                <Link href="/login" className="btn btn-outline btn-sm" onClick={() => setMobileMenuOpen(false)}>Login</Link>
+                                <Link href="/register" className="btn btn-primary btn-sm" onClick={() => setMobileMenuOpen(false)}>Sign Up</Link>
                             </>
                         )}
                     </nav>

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { Product, Category } from '@/lib/models';
 
-export default function ProductsPage() {
+function ProductsContent() {
     const searchParams = useSearchParams();
     const [products, setProducts] = useState<Product[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
@@ -127,5 +127,20 @@ export default function ProductsPage() {
         }
       `}</style>
         </div>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={
+            <div className="container py-3xl">
+                <div className="text-center py-3xl">
+                    <div className="spinner spinner-primary" style={{ width: '48px', height: '48px', margin: '0 auto' }} />
+                    <p style={{ marginTop: 'var(--spacing-md)', color: 'var(--color-text-light)' }}>Loading products...</p>
+                </div>
+            </div>
+        }>
+            <ProductsContent />
+        </Suspense>
     );
 }
