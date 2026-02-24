@@ -2,6 +2,7 @@ import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import { getProducts, getCategories } from '@/lib/database';
 import Image from 'next/image';
+import HeroVideo from '@/components/HeroVideo';
 
 export default function HomePage() {
   const products = getProducts({});
@@ -63,18 +64,13 @@ export default function HomePage() {
             </div>
             <div style={{
               position: 'relative',
-              aspectRatio: '1',
               borderRadius: 'var(--radius-xl)',
               overflow: 'hidden',
               boxShadow: 'var(--shadow-2xl)'
             }}>
-              <Image
-                src="/images/products/mixed_nuts_1769455895711.png"
-                alt="Premium Mixed Nuts"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
-                priority
+              <HeroVideo
+                staticImageSrc="/images/hero-video-fallback.jpg"
+                staticImageAlt="Premium Mixed Nuts"
               />
             </div>
           </div>
