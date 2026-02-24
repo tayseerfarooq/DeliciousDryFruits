@@ -2,14 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useAdminAuth } from '@/lib/useAdminAuth';
 
 export default function AdminDashboard() {
+    const { user, loading } = useAdminAuth();
     const [stats, setStats] = useState({ products: 0, orders: 0, revenue: 0 });
     const [orders, setOrders] = useState<any[]>([]);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        if (user) fetchData();
+    }, [user]);
 
     const fetchData = async () => {
         const [productsRes, ordersRes] = await Promise.all([
@@ -19,21 +21,37 @@ export default function AdminDashboard() {
 
         if (productsRes.ok && ordersRes.ok) {
             const products = await productsRes.json();
-            const orders = await ordersRes.json();
+            const ordersData = await ordersRes.json();
 
-            const revenue = orders.orders.reduce((sum: number, o: any) => sum + o.total, 0);
+            const revenue = ordersData.orders.reduce((sum: number, o: any) => sum + o.total, 0);
             setStats({
                 products: products.products.length,
-                orders: orders.orders.length,
+                orders: ordersData.orders.length,
                 revenue
             });
-            setOrders(orders.orders.slice(0, 5));
+            setOrders(ordersData.orders.slice(0, 5));
         }
     };
 
+    if (loading) {
+        return (
+            <div className="container py-3xl" style={{ textAlign: 'center' }}>
+                <div className="spinner" style={{ width: '48px', height: '48px', margin: '0 auto' }} />
+                <p style={{ marginTop: 'var(--spacing-lg)', color: 'var(--color-text-light)' }}>Verifying admin access...</p>
+            </div>
+        );
+    }
+
+    if (!user) return null;
+
     return (
         <div className="container py-2xl">
-            <h1 style={{ marginBottom: 'var(--spacing-2xl)' }}>Admin Dashboard</h1>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--spacing-2xl)' }}>
+                <h1>Admin Dashboard</h1>
+                <div style={{ fontSize: '0.875rem', color: 'var(--color-text-light)' }}>
+                    Welcome, <strong>{user.name}</strong>
+                </div>
+            </div>
 
             {/* Stats */}
             <div className="grid grid-3" style={{ marginBottom: 'var(--spacing-3xl)' }}>
@@ -46,7 +64,7 @@ export default function AdminDashboard() {
                     <div style={{ color: 'var(--color-text-light)' }}>Total Orders</div>
                 </div>
                 <div className="card" style={{ padding: 'var(--spacing-xl)', textAlign: 'center' }}>
-                    <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-primary)' }}>₹{stats.revenue}</div>
+                    <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--color-primary)' }}>₹{stats.revenue.toLocaleString()}</div>
                     <div style={{ color: 'var(--color-text-light)' }}>Total Revenue</div>
                 </div>
             </div>
@@ -57,6 +75,7 @@ export default function AdminDashboard() {
                 <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
                     <Link href="/admin/products" className="btn btn-primary">Manage Products</Link>
                     <Link href="/admin/orders" className="btn btn-secondary">View All Orders</Link>
+                    <Link href="/admin/categories" className="btn btn-secondary">Manage Categories</Link>
                 </div>
             </div>
 
@@ -80,8 +99,8 @@ export default function AdminDashboard() {
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)' }}>
                                         <span className={`badge ${order.status === 'delivered' ? 'badge-success' :
-                                                order.status === 'cancelled' ? 'badge-error' :
-                                                    'badge-info'
+                                            order.status === 'cancelled' ? 'badge-error' :
+                                                'badge-info'
                                             }`}>
                                             {order.status}
                                         </span>

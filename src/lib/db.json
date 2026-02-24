@@ -191,7 +191,7 @@
           "id": "var-003-1",
           "weight": "250g",
           "price": 399,
-          "stock": 40,
+          "stock": 50,
           "sku": "PIST-250"
         },
         {
@@ -224,7 +224,7 @@
         "Promotes gut health"
       ],
       "createdAt": "2026-01-15T10:00:00.000Z",
-      "updatedAt": "2026-01-15T10:00:00.000Z"
+      "updatedAt": "2026-02-24T19:28:50.101Z"
     },
     {
       "id": "prod-004",
@@ -796,7 +796,7 @@
         },
         {
           "id": "var-015-3",
-          "weight": "1.6kg",
+          "weight": "1.5kg",
           "price": 2199,
           "stock": 15,
           "sku": "GIFT-FEST-16"
@@ -810,9 +810,43 @@
         "Premium quality selection"
       ],
       "createdAt": "2026-01-15T10:00:00.000Z",
-      "updatedAt": "2026-01-15T10:00:00.000Z"
+      "updatedAt": "2026-02-24T19:29:04.497Z"
+    },
+    {
+      "name": "SUKKARI DATES",
+      "slug": "sukkari-dates",
+      "description": "asdasdasd",
+      "shortDescription": "Saudi arabian dates",
+      "categoryId": "cat-002",
+      "images": [],
+      "variants": [
+        {
+          "id": "",
+          "weight": "250g",
+          "price": 1500,
+          "stock": 25,
+          "sku": "qedasd"
+        }
+      ],
+      "featured": true,
+      "id": "1771960883427-jwx1i6s7p",
+      "createdAt": "2026-02-24T19:21:23.427Z",
+      "updatedAt": "2026-02-24T19:21:23.427Z"
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "id": "1771961126325-g914jx1gl",
+      "userId": "admin-001",
+      "items": [
+        {
+          "productId": "prod-002",
+          "variantId": "var-002-1",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-02-24T19:25:26.325Z"
+    }
+  ],
   "orders": []
 }

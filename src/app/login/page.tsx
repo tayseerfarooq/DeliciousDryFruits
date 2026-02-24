@@ -26,7 +26,11 @@ export default function LoginPage() {
             const data = await res.json();
 
             if (res.ok) {
-                router.push('/products');
+                if (data.user?.role === 'admin') {
+                    router.push('/admin');
+                } else {
+                    router.push('/products');
+                }
                 router.refresh();
             } else {
                 setError(data.error || 'Login failed');
